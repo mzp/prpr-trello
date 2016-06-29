@@ -1,7 +1,5 @@
 require "prpr/trello/version"
-
-module Prpr
-  module Trello
-    # Your code goes here...
-  end
-end
+require "prpr/action/trello/base"
+require "prpr/action/trello/labeled"
+require "prpr/action/trello/close"
+require "prpr/handler/trello"
