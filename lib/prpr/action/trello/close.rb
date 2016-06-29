@@ -3,6 +3,8 @@ module Prpr
     module Trello
       class Close < Base
         def call
+          return unless card
+
           card.move_to_list done_list
           card.pos = 0
           card.save

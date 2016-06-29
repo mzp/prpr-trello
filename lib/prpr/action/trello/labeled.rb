@@ -3,6 +3,8 @@ module Prpr
     module Trello
       class Labeled < Base
         def call
+          return unless card
+
           case
           when wip?
             card.move_to_list wip_list
