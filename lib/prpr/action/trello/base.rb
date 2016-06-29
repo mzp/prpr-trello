@@ -25,7 +25,7 @@ module Prpr
 
         def card_id
           @card_id ||=
-            if head.chomp =~ %r!trello.com/c/(\S+)!
+            if head.chomp =~ %r!trello.com/c/([^/]+)!
               $1
             end
         end
