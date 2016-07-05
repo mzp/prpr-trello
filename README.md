@@ -1,39 +1,74 @@
 # Prpr::Trello
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/prpr/trello`. To experiment with that code, run `bin/console` for an interactive prompt.
+[Prpr](https://github.com/mzp/prpr) plugin to move trello card when pull request status is changed.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
+## Install
 
 Add this line to your application's Gemfile:
 
 ```ruby
+# Gemfile
 gem 'prpr-trello'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install prpr-trello
-
 ## Usage
+This plugin move trello card like following:
 
-TODO: Write usage instructions here
+ * When pull request is labeled as WIP, move card to WIP list.
+ * When pull request is labeled as REVIEW, move card to REVIEW list and append github link to description.
+ * When pull requset is merged, move card to DONE list.
 
-## Development
+## Env
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Trello token:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+ * TRELLO_DEVELOPER_PUBLIC_KEY: Trello Developer API key. You can obtain from https://trello.com/1/appKey/generate
+ * TRELLO_MEMBER_TOKEN: Trello member token. You can obtain from https://trello.com/1/connect?key=<your developer public key>&name=prpr&response_type=token&scope=read,write
 
-## Contributing
+Github config:
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/prpr-trello.
+ * TRELLO_WIP_LABEL: Github's WIP label. (Default: `WIP`)
+ * TRELLO_REVIEW_LABEL: Github's review label. (Default: `REVIEW`)
 
+Trello config:
+
+ * TRELLO_WIP_LIST: Trello's WIP list id.
+ * TRELLO_REVIEW_LIST: Trello's review list id.
+ * TRELLO_DONE_LIST: Trello's done list id.
+
+### Tips: how to obtain trello list id
+If your board URL is `https://trello.com/b/deadbeaf/todo`, open `https://trello.com/1/boards/deadbeaf` and obtain following response.
+
+```json
+[{
+    "id": "4eea4ffc91e31d174600004a",
+    "name": "To Do Soon",
+    "cards": [{
+        "id": "4eea503791e31d1746000080",
+        "name": "Finish my awesome application"
+    }]
+}, {
+    "id": "4eea4ffc91e31d174600004b",
+    "name": "Doing",
+    "cards": [{
+        "id": "4eea503d91e31d174600008f",
+        "name": "Learn about the Trello API"
+    }, {
+        "id": "4eea522c91e31d174600027e",
+        "name": "Figure out how to read a user's board list"
+    }]
+}, {
+    "id": "4eea4ffc91e31d174600004c",
+    "name": "Done",
+    "cards": [{
+        "id": "4eea501f91e31d1746000062",
+        "name": "Get a key to use in my API requests"
+    }, {
+        "id": "4eea502b91e31d1746000071",
+        "name": "Find out where the Trello API documentation is"
+    }]
+}]
+```
 
 ## License
 
