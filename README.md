@@ -12,6 +12,8 @@ gem 'prpr-trello'
 ```
 
 ## Usage
+Write trello card URL at first line of pull request description.
+
 This plugin move trello card like following:
 
  * When pull request is labeled as WIP, move card to WIP list.
