@@ -25,7 +25,7 @@ This plugin move trello card like following:
 Trello token:
 
  * TRELLO_DEVELOPER_PUBLIC_KEY: Trello Developer API key. You can obtain from https://trello.com/1/appKey/generate
- * TRELLO_MEMBER_TOKEN: Trello member token. You can obtain from https://trello.com/1/connect?key=<your developer public key>&name=prpr&response_type=token&scope=read,write
+ * TRELLO_MEMBER_TOKEN: Trello member token. You can obtain from https://trello.com/1/connect?key=<your developer public key>&name=prpr&response_type=token&scope=read,write&expiration=never
 
 Github config:
 
